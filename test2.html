@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="post">
+        <div>
+            <label for="terms_and_conditions">I agree to the Terms of Service:</label>
+            <input type="checkbox" id="terms_and_conditions" value="1" onclick="terms_changed(this)" />
+        </div>
+        <div>
+            <button type="submit" id="submit_button" disabled>Sign Up</button>
+        </div>
+    </form>
+    <script>
+        //JavaScript function that enables or disables a submit button depending
+        //on whether a checkbox has been ticked or not.
+        function terms_changed(termsCheckBox) {
+            //If the checkbox has been checked
+            if (termsCheckBox.checked) {
+                //Set the disabled property to FALSE and enable the button.
+                document.getElementById("submit_button").disabled = false;
+            } else {
+                //Otherwise, disable the submit button.
+                document.getElementById("submit_button").disabled = true;
+            }
+        }
+    </script>
+</body>
+
+</html>

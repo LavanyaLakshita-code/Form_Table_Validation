@@ -1,0 +1,81 @@
+let user_name = document.getElementById("name");
+let user_email = document.getElementById("uname");
+let user_contact = document.getElementById("contact");
+let user_password = document.getElementById("pw");
+let user_confirm_password = document.getElementById("confirmpw");
+let user_terms = document.getElementById("terms");
+let name_err = document.getElementById("name-err");
+let email_err = document.getElementById("email-err");
+let contact_err = document.getElementById("contact-err");
+let password_err = document.getElementById("password-err");
+let confirm_pass_err = document.getElementById("confirm-pass-err");
+let terms_err = document.getElementById("terms-err");
+let sub = document.getElementById("submit");
+
+sub.style.backgroundColor = "grey";
+sub.style.color = "white";
+sub.style.pointerEvents = "none";
+sub.disabled = true;
+
+function formValidation() {
+    let name = user_name.value;
+    let email = user_email.value;
+    let contact = user_contact.value;
+    let password = user_password.value;
+    let confirm_pw = user_confirm_password.value;
+
+    console.log("name", name, "email", email, "contact", contact, "password", password, "confirm_pw", confirm_pw);
+
+    if (name.length === 0 || name.length > 30) {
+        name_err.innerHTML = "Name length can't be 0 and more than 30";
+        user_name.style.border = "2px solid red";
+        return false;
+    } else {
+        name_err.innerHTML = "";
+    }
+    if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+        email_err.innerHTML = "Please enter a valid email!";
+        user_email.style.border = "2px solid red";
+        return false;
+    } else {
+        email_err.innerHTML = "";
+    }
+    if (!contact.match(/^[1-9][0-9]{9}$/)) {
+        contact_err.innerHTML = "Phone number must be 10 characters long number and first digit can't be 0!";
+        user_contact.style.border = "2px solid red";
+        return false;
+    } else {
+        contact_err.innerHTML = "";
+    }
+    if (!password.match(/^.(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/)) {
+        password_err.innerHTML = "Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters!";
+        user_password.style.border = "2px solid red";
+        return false;
+    } else {
+        password_err.innerHTML = "";
+    }
+    if (confirm_pw !== password) {
+        confirm_pass_err.innerHTML = "Password doesn't match";
+        user_confirm_password.style.border = "2px solid red";
+        return false;
+    } else {
+        password_err.innerHTML = "";
+    }
+    return true;
+}
+
+function terms_changed(termsCheckBox) {
+    //If the checkbox has been checked
+    if (termsCheckBox.checked) {
+        //Set the disabled property to FALSE and enable the button.
+        sub.disabled = false;
+        sub.style.backgroundColor = "#288e88";
+        sub.style.pointerEvents = "auto";
+    } else {
+        //Otherwise, disable the submit button.
+        sub.style.backgroundColor = "grey";
+        sub.style.color = "white";
+        sub.style.pointerEvents = "none";
+        sub.disabled = true;
+    }
+}
