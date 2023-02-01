@@ -25,7 +25,6 @@ function formValidation() {
     let confirm_pw = user_confirm_password.value;
 
     console.log("name", name, "email", email, "contact", contact, "password", password, "confirm_pw", confirm_pw);
-
     if ((name.length === 0) || (email.length === 0) || (contact.length === 0) || (password.length === 0)) {
         if (name.length === 0 || name.length > 30) {
             name_err.innerHTML = "Please Enter Your Name";
@@ -54,16 +53,32 @@ function formValidation() {
         }
     }
     else {
+        if ((name.length !== 0 || name.length < 30)) {
+            name_err.innerHTML = "";
+            user_name.style.border = "none";
+        }
+        if (email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+            email_err.innerHTML = "";
+            user_email.style.border = "none";
+        }
+        if (contact.match(/^[1-9][0-9]{9}$/)) {
+            contact_err.innerHTML = "";
+            user_contact.style.border = "none";
+        }
+        if (password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}/)) {
+            password_err.innerHTML = "";
+            user_password.style.border = "none";
+        }
         if (confirm_pw !== password) {
             confirm_pass_err.innerHTML = "Password doesn't match";
             user_confirm_password.style.border = "2px solid red";
-            // return false;
+            return false;
         } else {
             confirm_pass_err.innerHTML = "";
             user_confirm_password.style.border = "none";
         }
-        // return true;
     }
+    return true;
 }
 
 function terms_changed(termsCheckBox) {

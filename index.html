@@ -5,19 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Validation</title>
+    <title>Registration Form</title>
     <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
     <div class="main">
-        <h1 class="head">FORM VALIDATION</h1>
+        <h1 class="head">REGISTRATION FORM</h1>
         <form name="myForm" action="" onsubmit="formValidation(); return false" novalidate>
             <table>
                 <tbody>
                     <tr class="tr">
                         <td><label for="name">Name:</label></td>
-                        <td> <input type="text" id="name" name="name" placeholder="Enter Your Name" class="user" />
+                        <td> <input type="text" id="name" name="name" placeholder="Enter Your Name" class="user"
+                                maxlength="30" />
                             <div id="name-err" class="err container"></div>
                         </td>
                     </tr>
@@ -32,7 +33,7 @@
                     <tr class="tr">
                         <td><label for="contact">Phone Number:</label></td>
                         <td><input type="text" id="contact" name="contact" placeholder="Enter Your Contact"
-                                class="contact" />
+                                class="contact" minlength="8" maxlength="15" />
                             <div id="contact-err" class="err container"></div>
                         </td>
                     </tr>
@@ -85,7 +86,7 @@
 
     </div>
 
-    <script src="./script.js"></script>
+    <script src="./script2.js"></script>
 </body>
 
 </html>
